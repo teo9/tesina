@@ -1,0 +1,75 @@
+<html>
+	<head>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link href="grf.css" type="text/css" rel="stylesheet">
+		<script src="./js/globali.js">
+		</script>
+		<script src="./js/save.js">
+		</script>
+		<script src="./js/geometria.js">
+		</script>
+		<script src="./js/crea.js">
+		</script>
+		<script src="./js/main.js">
+		</script>
+	
+		
+	
+	
+				<div id="oscura" class="fade">
+					<div id="popup">
+						<label>Inserisci l'altezza</label>
+						<input type="number" class="input" id="h"  value="200">
+							</br>
+							<label >Inserisci larghezza</label>
+						<input type="number" class="input" id="w" value = "300">
+							</br>
+						<button type="button" class="input" onclick="crea_ok()" >Ok</button>
+					</div>
+				</div>
+	</head>
+	<body>
+		<div id="menu1">
+			<div id="nuovo" class="bottone" onclick="crea()">
+			Nuovo
+			</div>
+
+			<div id="cancella" class="bottone" onclick="cancella()">
+			Cancella
+			</div>
+
+			<div id="nuovo" class="bottone" onclick="save()">
+			Salva
+			</div>
+		</div>
+		
+		
+		
+		<div id="menu2">
+			<div id="P" class="bottone" onclick="stato=1">
+				Entrata		
+			</div>	
+			<div id="P" class="bottone" onclick="stato=2">
+			Parcheggia			
+			</div>			
+			<div id="Elimina" class="bottone" onclick="stato=3">
+			Elimina			
+			</div>
+		</div>
+
+
+		<canvas id="canvas" onclick="doveclicchi(event)">
+
+		</canvas>
+
+		<script>
+		var w = $(window);
+		$("#canvas").prop({
+		width:w.width(),
+		height:w.height()
+		});	
+		</script>
+
+	</body>
+</html>
