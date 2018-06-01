@@ -16,7 +16,10 @@ CREATE TABLE if not exists parcheggio (
 
 CREATE TABLE if not exists macchina (
   targa varchar(10) NOT NULL primary key,
-  Parcheggio_nome varchar(10) NOT NULL
+  Parcheggio_nome varchar(10) NOT NULL,
+  foreign key (Parcheggio_nome) references parcheggio(nome)
+                            on delete cascade
+                            on update cascade
 );
 
 CREATE TABLE if not exists collegamento (
