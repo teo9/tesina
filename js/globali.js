@@ -6,8 +6,8 @@ function isInside(pos){
     {
         var rect = {"x" : parcheggi[i].x , "y" : parcheggi[i].y};
         var temp = {"x": rect.x ,"y": rect.y};
-        rect.x = rect.x * 25 + offset.x;
-        rect.y = rect.y * 25 + offset.y;
+        rect.x = (rect.x-1) * 25 + offset.x;
+        rect.y = (rect.y-1) * 25 + offset.y;
 
             if(pos.x > rect.x && pos.x < rect.x+50 && pos.y < rect.y+ 50 && pos.y > rect.y)
             {               
@@ -25,7 +25,7 @@ function ArrayContains(array , obj)
         {
             return true;
         }
-        else if( array[i].x + 1 == obj.x || array[i].y +1 == obj.y)
+        else if((array[i].y+1==obj.y && array[i].x+1==obj.x) || (array[i].y+1==obj.y && array[i].x-1==obj.x) || (array[i].y-1==obj.y && array[i].x+1==obj.x) || (array[i].y-1==obj.y && array[i].x-1==obj.x) || (array[i].x + 1 == obj.x && array[i].y==obj.y)  || (array[i].y + 1 == obj.y && array[i].x==obj.x) || (array[i].x-1 == obj.x && array[i].y==obj.y) || (array[i].y-1 == obj.y&& array[i].x==obj.x))
         {
             return true;
         }
@@ -52,3 +52,4 @@ var size;
 var parcheggi = [];
 var ctx; //oggetto per disegnare
 var entrata = [];
+var contaaa=0;
