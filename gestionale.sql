@@ -23,6 +23,7 @@ CREATE TABLE if not exists collegamento (
   distanza varchar(10) NOT NULL,
   Parcheggio_a varchar(10) NOT NULL,
   Parcheggio_b varchar(10) NOT NULL,
+  check Parcheggio_a <> Parcheggio_b,
   primary key( Parcheggio_a , Parcheggio_b),
   foreign key Parcheggio_a references parcheggio(nome),
   foreign key Parcheggio_b references parcheggio(nome)
