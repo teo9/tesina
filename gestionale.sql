@@ -25,10 +25,10 @@ CREATE TABLE if not exists collegamento (
   Parcheggio_b varchar(10) NOT NULL,
   check Parcheggio_a <> Parcheggio_b,
   primary key( Parcheggio_a , Parcheggio_b),
-  foreign key Parcheggio_a references parcheggio(nome)
+  constraint fk1 foreign key Parcheggio_a references parcheggio(nome)
                             on delete cascade
                             on update cascade,
-  foreign key Parcheggio_b references parcheggio(nome)
+  constraint fk2 foreign key Parcheggio_b references parcheggio(nome)
                             on delete cascade
                             on update cascade
 );
