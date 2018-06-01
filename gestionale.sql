@@ -36,6 +36,10 @@ CREATE TABLE if not exists radice (
   Parcheggio_nome varchar(10) NOT NULL,
   Entrata_idEntrata varchar(45) NOT NULL,
   primary key (Parcheggio_nome , Entrata_idEntrata),
-  foreign key (Parcheggio_nome) references parcheggio(nome),
+  foreign key (Parcheggio_nome) references parcheggio(nome)
+                            on delete cascade
+                            on update cascade,
   foreign key (Entrata_idEntrata) references entrata(idEntrata)
+                            on delete cascade
+                            on update cascade
 ) ;
