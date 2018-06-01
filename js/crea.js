@@ -1,8 +1,8 @@
 var width ;
 var height;
 var larghezzacella = 25;
-
-
+var nome="";
+var conta = 0;
 function crea()
 {
 	$("#oscura").removeClass("fade");
@@ -10,6 +10,9 @@ function crea()
 
 function crea_ok()
 {
+	parcheggi = [];
+	entrata = [];
+	nome = "parcheggio"+conta;
 	width = $("#w").val();
 	height = $("#h").val();
 	size = { width:width , height:height};

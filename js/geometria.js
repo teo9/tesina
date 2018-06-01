@@ -9,7 +9,7 @@ function orientamento(punto)
     var dx1 = (punto.x - (offset.x +  parseInt(size.width))) * -1;
     var dy0 = punto.y - offset.y;
     var dy1 = (punto.y - (offset.y + parseInt(size.height))) * -1;
-
+    
     if(dx0 < dy0 && dx0 < dy1  )
     {
         return "va";
