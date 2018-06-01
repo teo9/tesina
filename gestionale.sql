@@ -9,14 +9,14 @@ CREATE TABLE if not exists entrata (
 );
 
 CREATE TABLE if not exists parcheggio (
-  nome varchar(10) NOT NULL primary key,
+  nome varchar(50) NOT NULL primary key,
   x int(11) DEFAULT NULL,
   y int(11) DEFAULT NULL
 );
 
 CREATE TABLE if not exists macchina (
   targa varchar(10) NOT NULL primary key,
-  Parcheggio_nome varchar(10) NOT NULL,
+  Parcheggio_nome varchar(50) NOT NULL,
   foreign key (Parcheggio_nome) references parcheggio(nome)
                             on delete cascade
                             on update cascade
@@ -24,8 +24,8 @@ CREATE TABLE if not exists macchina (
 
 CREATE TABLE if not exists collegamento (
   distanza varchar(10) NOT NULL,
-  Parcheggio_a varchar(10) NOT NULL,
-  Parcheggio_b varchar(10) NOT NULL,
+  Parcheggio_a varchar(50) NOT NULL,
+  Parcheggio_b varchar(50) NOT NULL,
   primary key( Parcheggio_a , Parcheggio_b),
   foreign key (Parcheggio_a) references parcheggio(nome)
                             on delete cascade
@@ -36,7 +36,7 @@ CREATE TABLE if not exists collegamento (
 );
 
 CREATE TABLE if not exists radice (
-  Parcheggio_nome varchar(10) NOT NULL,
+  Parcheggio_nome varchar(50) NOT NULL,
   Entrata_idEntrata int(10) NOT NULL,
   primary key (Parcheggio_nome , Entrata_idEntrata),
   foreign key (Parcheggio_nome) references parcheggio(nome)
