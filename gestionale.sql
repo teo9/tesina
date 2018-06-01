@@ -3,9 +3,9 @@ use gestionale;
 
 
 CREATE TABLE if not exists entrata (
-  idEntrata int(11) NOT NULL auto_increment primary key,
-  x int(11) NOT NULL,
-  y int(11) NOT NULL
+  idEntrata int(10) NOT NULL auto_increment primary key,
+  x int(10) NOT NULL,
+  y int(10) NOT NULL
 );
 
 CREATE TABLE if not exists parcheggio (
@@ -34,7 +34,7 @@ CREATE TABLE if not exists collegamento (
 
 CREATE TABLE if not exists radice (
   Parcheggio_nome varchar(10) NOT NULL,
-  Entrata_idEntrata varchar(45) NOT NULL,
+  Entrata_idEntrata int(10) NOT NULL,
   primary key (Parcheggio_nome , Entrata_idEntrata),
   foreign key (Parcheggio_nome) references parcheggio(nome)
                             on delete cascade
