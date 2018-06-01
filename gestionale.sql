@@ -23,12 +23,11 @@ CREATE TABLE if not exists collegamento (
   distanza varchar(10) NOT NULL,
   Parcheggio_a varchar(10) NOT NULL,
   Parcheggio_b varchar(10) NOT NULL,
-  check Parcheggio_a <> Parcheggio_b,
   primary key( Parcheggio_a , Parcheggio_b),
-  constraint fk1 foreign key Parcheggio_a references parcheggio(nome)
+  foreign key (Parcheggio_a) references parcheggio(nome)
                             on delete cascade
                             on update cascade,
-  constraint fk2 foreign key Parcheggio_b references parcheggio(nome)
+  foreign key (Parcheggio_b) references parcheggio(nome)
                             on delete cascade
                             on update cascade
 );
@@ -37,6 +36,6 @@ CREATE TABLE if not exists radice (
   Parcheggio_nome varchar(10) NOT NULL,
   Entrata_idEntrata varchar(45) NOT NULL,
   primary key (Parcheggio_nome , Entrata_idEntrata),
-  foreign key Parcheggio_nome references parcheggio(nome),
-  foreign key Entrata_idEntrata references entrata(idEntrata)
+  foreign key (Parcheggio_nome) references parcheggio(nome),
+  foreign key (Entrata_idEntrata) references entrata(idEntrata)
 ) ;
