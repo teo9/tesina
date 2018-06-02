@@ -3,31 +3,44 @@ function save()
     if(creato)
     { 
        var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function()
-            {
-                if(this.readyState == 4 && this.status == 200 )
-                    console.log(xhttp.responseText);
-            };
         var data = "[";
         for(var i=0;i<parcheggi.length;i++)
         {    
-            contaaa++;       
+            contaaa++;
+            if(i != 0)
+                data = data + ',';       
             data += "{\"nome\":\"parcheggio"+String(contaaa)+"\" , \"x\":\""+parcheggi[i].x+"\" , \"y\":\""+parcheggi[i].y+"\"}";        
         }
         data = data + "]";
         xhttp.open("POST", "./api/salvaparcheggi.php", true);	
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("dati=" + data + "&w="+50+"&h=" + 50);
-    
-        console.log(data);
+        xhttp.send("dati=" + data );
+        
 
+        var entry = '[';
+        
         for(var j=0;j<entrata.length;j++)
         {
             var x = Math.ceil((entrata[j].x-offset.x)/25);
             var y = Math.ceil((entrata[j].y-offset.y)/25);
-            xhttp.open("GET", "./api/salvaentrata.php?entratax="+x+"&entratay="+y,true);
-            xhttp.send();
-            console.log("ho inviato :D");       
+            if(j!=0)
+                entry += ',';
+            entry+= "{\"x\":\""+x+"\",\"y\":\""+y+"\"}";
+                   
         }
+        var sxhttp = new XMLHttpRequest();
+        entry +=']';
+        sxhttp.open("POST", "./api/salvaentrata.php",true);
+        sxhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        sxhttp.onreadystatechange = function()
+            {
+                if(this.readyState == 4 && this.status == 200 )
+                {
+                    window.location = "./percorso/index.html";
+                }
+            };
+        sxhttp.send("entrate=" + entry);
+
+       
     }
 }
