@@ -37,6 +37,4 @@ function body_load()
 
         drawEntrate(entrate);
         drawParcheggi(parcheggi);
-
-        console.log(all);
 }

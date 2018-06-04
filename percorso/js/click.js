@@ -2,6 +2,7 @@ function MouseClick(e) {
     var c = isInside(e);
     linea(e,all);
 }
+var contamelo = 0;
 var tieni = {"x": 0,"y" : 0};
 var passati = [];
 function linea(posi, punti) {
