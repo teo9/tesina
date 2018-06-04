@@ -30,7 +30,6 @@ function drawParcheggi(parcheggi)
         ctx.fill();
         ctx.stroke();
     }
-
     DrawPunti();
 }
 
@@ -39,34 +38,31 @@ function FindNextNear(p)
     var xx = SameX(p,parcheggi);
     var yy = SameY(p,parcheggi);
 
-
     if(xx.length == 0 && yy.length == 0)
         return p;
     else
     {
-        if(xx.length == 0)
-        {
             var k = p;
             var i =0;
             while( i <= yy.length -1 ) // 
             {
-                if(yy[i].x == k.x +2)
+                if( parseInt(yy[i].x) == ( parseInt(k.x) +2) )
                 {
                     k = yy[i];
                     parcheggi = array_remove(k , parcheggi);
-                    i--;
+                    //i--;
                 }
-            i++;
+				i++;
             }
-            return k;
-        }
-        else
-        {
+			
+            if(k != p)
+				return k;
+       
             var k = p;
             var i =0;
             while( i <= xx.length-1 )
             {
-                if(xx[i].y == k.y +2)
+                if( parseInt(xx[i].y) == parseInt(k.y) +2)
                 {
                     k = xx[i];
                     parcheggi = array_remove(k , parcheggi);
@@ -75,9 +71,7 @@ function FindNextNear(p)
                 i++;
             }
             return k;
-        }
     }
-
 }
 
 function SameX(p , array)
@@ -152,7 +146,7 @@ function array_remove(value , array)
 {
     for(var i = 0 ; i < array.length;i++)
     {
-        if(array[i].id == value.id)
+        if(array[i].nome == value.nome)
         {    
             array.splice(i , 1);
         }
