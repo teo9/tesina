@@ -1,8 +1,12 @@
 <?php
 $a = array(   );
-$b = array("id" => 1 , "x" => 0 , "y" => 2);
+$con = mysqli_connect("localhost","root", "", "gestionale");
 
-array_push($a , $b);
+$q = mysqli_query($con , "select * from entrata");
+while( $r = mysqli_fetch_array($q))
+{
+    array_push($a ,  json_encode($r)  );
+}
 
 echo json_encode($a);
 ?>

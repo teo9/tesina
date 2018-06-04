@@ -35,6 +35,9 @@ function body_load()
         ctx.scale(1,1);
         ctx.lineWidth = "2";
 
+        console.log(entrate);
+        console.log(parcheggi);
+
         drawEntrate(entrate);
         drawParcheggi(parcheggi);
 }
