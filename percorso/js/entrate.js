@@ -1,3 +1,5 @@
+var idblocco =0;
+
 
 function drawEntrate(entrate)
 { 
@@ -79,7 +81,7 @@ function SameX(p , array)
     var a = [];
     for(var i = 0; i < array.length;i++)
     {
-        if(array[i].x == p.x)
+        if( parseInt(array[i].x) == parseInt(p.x))
             a.push(array[i]);
     }
     return Ordina(a);
@@ -101,7 +103,7 @@ function Ordina(a)
     for(var k =0; k < a.length;k++)
         for( var i =0; i < (a.length -1) ; i++)
         {
-            if(! (a[i].x < a[i+1].x || a[i].y < a[i+1].y)  )
+            if(! (  parseInt(a[i].x) < parseInt(a[i+1].x) || parseInt(a[i].y) < parseInt(a[i+1].y))  )
             {
                 var j = a[i];
                 a[i] = a[i+1];
@@ -134,10 +136,9 @@ function DrawPunti()
         ctx.arc( x+25,y+50,10,0,2 * Math.PI );
         ctx.fill();
 
-        all.push({"tipo":"p" , "x":(pA.x * 25 + 175),"y":(pA.y * 25 + 100)});
-        all.push({"tipo":"p" , "x":(pB.x * 25 + 175),"y":(pB.y * 25 + 150)});
-
-      
+        all.push({"tipo":"p" , "nome": pA.nome , "x":(pA.x * 25 + 175),"y":(pA.y * 25 + 100) , "idblocco" : idblocco});
+        all.push({"tipo":"p" , "nome": pB.nome ,"x":(pB.x * 25 + 175),"y":(pB.y * 25 + 150), "idblocco" : idblocco }); 
+        idblocco ++;     
    }
 }
 
