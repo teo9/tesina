@@ -2,9 +2,10 @@ function MouseClick(e) {
     var c = isInside(e);
     linea(e,all);
 }
-var contamelo = 0;
-var tieni = {"x": 0,"y" : 0};
+var contamelo = 1;
+var tieni = {"x": 0,"y" : 0, "idblocco": 0};
 var passati = [];
+var fai = true;
 function linea(posi, punti) {
         var fai = true;
         for (var i = 0; i < punti.length; i++) {
@@ -13,51 +14,122 @@ function linea(posi, punti) {
                 {
                     tieni.x=punti[i].x;
                     tieni.y=punti[i].y;  
-                    passati.push(tieni);
+                    tieni.idblocco = punti[i].idblocco;
                     contamelo++;                
                 }
                 else
-                {       
-                    for(var j=0;j<passati.length-1;j+=2)
-                    {                       
-                        if((tieni.x==passati[j].x && tieni.y== passati[j].y && punti[i].x == passati[j+1].x && punti[i].y == passati[j+1].y) || (tieni.x==punti[i].x && tieni.y==punti[i].y))
+                {  
+                    if(tieni.idblocco != punti[i].idblocco)
+                    {
+                        if(passati.length==-1)
                         {
-                            fai=false;
-                            contamelo=1;
+                            if(tieni.x!=punti[i].x && tieni.y!=punti[i].y)   
+                            {
+                                ctx.beginPath();
+                                ctx.lineWidth = "1";
+                                ctx.moveTo(tieni.x,tieni.y);
+                                ctx.lineTo(punti[i].x,punti[i].y);
+                                ctx.fill();
+                                ctx.stroke();
+                                punto=false;
+
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(tieni.x, tieni.y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(punti[i].x, punti[i].y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+                                passati.push(tieni);
+                                passati.push(punti[i]); 
+                                contamelo=1;
+                            }
                         }
-                    }
-                    if(fai==true)
-                    {                        
-                        ctx.beginPath();
-                        ctx.lineWidth = "1";
-                        ctx.moveTo(tieni.x,tieni.y);
-                        ctx.lineTo(punti[i].x,punti[i].y);
-                        ctx.fill();
-                        ctx.stroke();
-                        punto=false;
+                        else 
+                            for(var j=0;j<passati.length-1;j+=2)
+                            {                       
+                                if((tieni.x==passati[j].x && tieni.y== passati[j].y && punti[i].x == passati[j+1].x && punti[i].y == passati[j+1].y) || (tieni.x==punti[i].x && tieni.y==punti[i].y))
+                                {
+                                    fai=false;
+                                }
+                            }
+                            if(fai==true)
+                            {                        
+                                ctx.beginPath();
+                                ctx.lineWidth = "1";
+                                ctx.moveTo(tieni.x,tieni.y);
+                                ctx.lineTo(punti[i].x,punti[i].y);
+                                ctx.fill();
+                                ctx.stroke();
+                                punto=false;
 
-                        ctx.lineWidth = "1";
-                        ctx.beginPath();
-                        ctx.fillStyle = "blue";
-                        ctx.strokeStyle = 'purple';
-                        ctx.arc(tieni.x, tieni.y, 10, 0, 2 * Math.PI);
-                        ctx.fill();
-                        ctx.stroke();
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(tieni.x, tieni.y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
 
-                        ctx.lineWidth = "1";
-                        ctx.beginPath();
-                        ctx.fillStyle = "blue";
-                        ctx.strokeStyle = 'purple';
-                        ctx.arc(punti[i].x, punti[i].y, 10, 0, 2 * Math.PI);
-                        ctx.fill();
-                        ctx.stroke();
-                        
-                        passati.push(punti[i]); 
-                        contamelo=1;
-                    } 
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(punti[i].x, punti[i].y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+                                passati.push(tieni);
+                                passati.push(punti[i]); 
+                                contamelo=1;
+                            }
+                            else
+                            {
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(tieni.x, tieni.y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(punti[i].x, punti[i].y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+                                contamelo=1;
+                            }
+
+                        }                   
                     else
                     {
-                        console.log("NO NO");
+                                console.log("NO NO");
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(tieni.x, tieni.y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+
+                                ctx.lineWidth = "1";
+                                ctx.beginPath();
+                                ctx.fillStyle = "blue";
+                                ctx.strokeStyle = 'purple';
+                                ctx.arc(punti[i].x, punti[i].y, 10, 0, 2 * Math.PI);
+                                ctx.fill();
+                                ctx.stroke();
+                                contamelo=1;
                     }                   
                 }
             }
