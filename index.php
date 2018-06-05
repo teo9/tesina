@@ -15,7 +15,7 @@
                 $user = $_POST['user'];
                 $pw = $_POST['pw'];
 
-                if($user == "" && $pw == "")
+                if($user == "admin" && $pw == "admin")
                 {
                     $_SESSION["log"] = "login";
                     header("location:nuovo.html");

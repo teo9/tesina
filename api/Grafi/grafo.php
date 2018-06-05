@@ -44,7 +44,27 @@
 
         public function Bellman($start)
         {
-            
+            for($x=0;$x < count($this->Nodi);$i++)
+            {
+                $n = $this->Nodi[$i];
+                if($n->getPotencial() != INF )
+                {
+                    //cambio il valore a tutti i nodi collegati
+                    for($a=0;$a < count($this->Archi);$a++)
+                    {
+                        if($this->Archi[$a]->nodoa->getNome() == $n->getNome())
+                        {
+                            if($this->Archi[$a]->nodob->GetPotencial() > $n->GetPotencial() + $this->Archi[$a]->GetPeso())
+                            {
+                                $this->Archi[$a]->nodob->SetPotencial( $n->GetPotencial() + $this->Archi[$a]->GetPeso());
+                                $this->Archi[$a]->nodob->SetFather($n);
+                            } 
+                        }
+                    }
+                }
+            }
+            usort( $this->Nodi , "ordina" );
+            return $this->Nodi[0];
         }
 
         public function dijkstra($da , $a)
