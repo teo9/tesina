@@ -51,6 +51,7 @@ function linea(posi, punti) {
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
                                 contamelo=1;
+                                savee();
                             }
                         }
                         else 
@@ -89,6 +90,7 @@ function linea(posi, punti) {
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
                                 contamelo=1;
+                                savee();
                             }
                             else
                             {
