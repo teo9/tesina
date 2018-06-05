@@ -1,5 +1,7 @@
 <?php 
-$connessione = mysqli_connect("localhost","root", "", "gestionale");
+
+require "config.php";
+
 mysqli_query($connessione , "delete from entrata where 1");
 if(!isset($_POST['entrate']))
     die("errore, non siconosce la variabile post");

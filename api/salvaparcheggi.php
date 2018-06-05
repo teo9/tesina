@@ -1,5 +1,7 @@
 <?php
-$connessione = mysqli_connect("localhost","root", "", "gestionale");
+
+require "config.php";
+
 mysqli_query($connessione , "delete from parcheggio where 1");
 $p = json_decode($_POST['dati'] );
 

@@ -1,0 +1,68 @@
+body{
+	margin:0px;
+	}
+	.bottone
+	{
+		padding:10px;
+		
+	}
+	#menu1
+	{
+		position:fixed;
+		z-index:10;
+		top:10px;
+		left:10px;
+		border:1px solid black;
+		padding:10px;				
+	}
+	#nuovo,#cancella
+	{
+		display:inline;
+		
+	}
+	.bottone:hover
+	{
+		background-color:red;
+	}
+	#menu2
+	{
+		position:fixed;
+		z-index:10;
+		top:100px;
+		left:10px;
+		border:1px solid black;
+		padding:10px;	
+	}
+	#oscura
+	{
+		z-index:100;
+		width:100%;
+		height:100%;
+		background-color:rgba(40,40,40,0.5);
+		position:fixed;
+		top:0px;		
+	}
+	
+	#popup
+	{
+		position:fixed;
+			float:center;
+			width:30%;
+			margin-left:35%;
+			margin-right:35%;
+			background-color:white;
+			text-align:center;
+			padding:20px;
+			top:200px;
+	}
+	
+	.input
+	{
+		margin-top:20px;
+		padding:5px;
+	}
+	
+	.fade
+	{
+			display:none;
+	}
