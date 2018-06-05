@@ -18,7 +18,7 @@ while True: #Take frame by frame
     #cv2.imshow("frame" , frame)
     if mx[0] != "!" and len(mx) == 7:
         if( mx != savedplate):
-            mex = "http://127.0.0.1:8080/api.php?m=" + mx
+            mex = "http://127.0.0.1:8080/tutto/tesina/api/targa.php?m=" + mx
             response = request.urlopen(mex).read()
     savedplate = mx
     time.sleep(1)       #1 second sleep

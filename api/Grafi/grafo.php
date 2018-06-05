@@ -42,6 +42,11 @@
             return $this->dijkstra($da,$a);
         }
 
+        public function Bellman($start)
+        {
+            
+        }
+
         public function dijkstra($da , $a)
         {
             
