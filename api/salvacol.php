@@ -1,6 +1,6 @@
 <?php
 
-require "configu.php";
+require "config.php";
 
 mysqli_query($connessione , "delete from collegamento where 1");
 $p = json_decode($_POST['dati'] );

@@ -2,11 +2,10 @@ function save()
 {
     if(creato)
     { 
-       var xhttp = new XMLHttpRequest();
+        var xhttp = new XMLHttpRequest();
         var data = "[";
         for(var i=0;i<parcheggi.length;i++)
         {    
-            contaaa++;
             if(i != 0)
                 data = data + ',';       
             data += "{\"nome\":\"parcheggio"+String(contaaa)+"\" , \"x\":\""+parcheggi[i].x+"\" , \"y\":\""+parcheggi[i].y+"\"}";        

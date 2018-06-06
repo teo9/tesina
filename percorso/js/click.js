@@ -6,6 +6,7 @@ var contamelo = 1;
 var tieni = {"x": 0,"y" : 0, "idblocco": 0};
 var passati = [];
 var fai = true;
+var parti=0;
 function linea(posi, punti) {
         var fai = true;
         for (var i = 0; i < punti.length; i++) {
@@ -21,9 +22,9 @@ function linea(posi, punti) {
                 {  
                     if(tieni.idblocco != punti[i].idblocco)
                     {
-                        if(passati.length==-1)
+                        if(passati.length==0)
                         {
-                            if(tieni.x!=punti[i].x && tieni.y!=punti[i].y)   
+                            if(tieni.x!=punti[i].x || tieni.y!=punti[i].y)   
                             {
                                 ctx.beginPath();
                                 ctx.lineWidth = "1";
@@ -50,8 +51,9 @@ function linea(posi, punti) {
                                 ctx.stroke();
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
-                                contamelo=1;
-                                savee();
+                                contamelo=1;                              
+                                salva(parti);
+                                parti+=2;
                             }
                         }
                         else 
@@ -89,8 +91,9 @@ function linea(posi, punti) {
                                 ctx.stroke();
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
-                                contamelo=1;
-                                savee();
+                                contamelo=1;                                
+                                salva(parti);
+                                parti+=2;
                             }
                             else
                             {
