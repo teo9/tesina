@@ -1,9 +1,10 @@
 function MouseClick(e) {
     var c = isInside(e);
     linea(e,all);
+    console.log(all);
 }
 var contamelo = 1;
-var tieni = {"x": 0,"y" : 0, "idblocco": 0};
+var tieni = {"nome":"","x": 0,"y" : 0, "idblocco": 0};
 var passati = [];
 var fai = true;
 var parti=0;
@@ -16,6 +17,7 @@ function linea(posi, punti) {
                     tieni.x=punti[i].x;
                     tieni.y=punti[i].y;  
                     tieni.idblocco = punti[i].idblocco;
+                    tieni.nome = punti[i].nome;
                     contamelo++;                
                 }
                 else
@@ -57,6 +59,7 @@ function linea(posi, punti) {
                             }
                         }
                         else 
+                        {
                             for(var j=0;j<passati.length-1;j+=2)
                             {                       
                                 if((tieni.x==passati[j].x && tieni.y== passati[j].y && punti[i].x == passati[j+1].x && punti[i].y == passati[j+1].y) || (tieni.x==punti[i].x && tieni.y==punti[i].y))
@@ -114,8 +117,8 @@ function linea(posi, punti) {
                                 ctx.stroke();
                                 contamelo=1;
                             }
-
-                        }                   
+                        }
+                    }                   
                     else
                     {
                                 console.log("NO NO");
