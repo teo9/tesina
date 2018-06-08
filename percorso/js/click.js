@@ -3,21 +3,25 @@ function MouseClick(e) {
     linea(e,all);
     console.log(all);
 }
+
+var Collegamenti = [];
 var contamelo = 1;
-var tieni = {"nome":"","x": 0,"y" : 0, "idblocco": 0};
+var tieni = {"nome":"","x": 0,"y" : 0, "idblocco": 0 , "tipo" : ' '};
 var passati = [];
 var fai = true;
 var parti=0;
 function linea(posi, punti) {
         var fai = true;
+       
         for (var i = 0; i < punti.length; i++) {
             if (posi.x > punti[i].x && posi.x < punti[i].x + 20 && posi.y < punti[i].y + 20 && posi.y > punti[i].y) {
                 if(contamelo%2!=0)
                 {
-                    tieni.x=punti[i].x;
+                    tieni.x=punti[i].x;  //tieni : primo nodo premuto
                     tieni.y=punti[i].y;  
                     tieni.idblocco = punti[i].idblocco;
                     tieni.nome = punti[i].nome;
+                    tieni.tipo = punti[i].tipo;
                     contamelo++;                
                 }
                 else
@@ -54,7 +58,8 @@ function linea(posi, punti) {
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
                                 contamelo=1;                              
-                                salva(parti);
+                                Collegamenti.push( { "da" : tieni, "a" : punti[i] } );
+                                ////////////////////////////////////////////
                                 parti+=2;
                             }
                         }
@@ -95,7 +100,8 @@ function linea(posi, punti) {
                                 passati.push(tieni);
                                 passati.push(punti[i]); 
                                 contamelo=1;                                
-                                salva(parti);
+                                Collegamenti.push( { "da" : tieni, "a" : punti[i] } );
+                                ///////////////////////////////////////
                                 parti+=2;
                             }
                             else
@@ -142,8 +148,8 @@ function linea(posi, punti) {
                 }
             }
         }
-        
 }
+
 function isInside(pos) {
     for (var i = 0; i < all.length; i++) {
         var rect = all[i];

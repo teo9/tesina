@@ -14,7 +14,7 @@ function drawEntrate(entrate)
         ctx.fill();
         ctx.stroke();
         
-        all.push({"tipo":"e" , "x":x,"y":y});
+        all.push({"nome" : entrate[i].nome ,"tipo":"e" , "x":x,"y":y});
     }
 }
 
@@ -39,11 +39,12 @@ function FindNextNear(p)
 {
     var xx = SameX(p,parcheggi);
     var yy = SameY(p,parcheggi);
-
+    var prec = p;
     if(xx.length == 0 && yy.length == 0)
         return p;
     else
     {
+           
             var k = p;
             var i =0;
             while( i <= yy.length -1 ) // 
@@ -52,6 +53,9 @@ function FindNextNear(p)
                 {
                     k = yy[i];
                     parcheggi = array_remove(k , parcheggi);
+                     //AGGIUNGO COLLEGAMENTI 
+                    Collegamenti.push( { "da" : prec, "a" : k } );
+                    prec = k;
                     //i--;
                 }
 				i++;
@@ -61,6 +65,7 @@ function FindNextNear(p)
 				return k;
        
             var k = p;
+            prec = p;
             var i =0;
             while( i <= xx.length-1 )
             {
@@ -68,6 +73,9 @@ function FindNextNear(p)
                 {
                     k = xx[i];
                     parcheggi = array_remove(k , parcheggi);
+                     //AGGIUNGO COLLEGAMENTI 
+                    Collegamenti.push( { "da" : p, "a" : k } );
+                    prec = k;
                     i--;
                 }
                 i++;

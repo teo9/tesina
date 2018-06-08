@@ -2,13 +2,22 @@ function save()
 {
     if(creato)
     { 
+        var contaaa=0;
         var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function()
+            {
+                if(this.readyState == 4 && this.status == 200 )
+                {
+                    console.log( xhttp.responseText);
+                }
+            };
         var data = "[";
         for(var i=0;i<parcheggi.length;i++)
         {    
             if(i != 0)
                 data = data + ',';       
-            data += "{\"nome\":\"parcheggio"+String(contaaa)+"\" , \"x\":\""+parcheggi[i].x+"\" , \"y\":\""+parcheggi[i].y+"\"}";        
+            data += "{\"nome\":\"parcheggio"+String(contaaa)+"\" , \"x\":\""+parcheggi[i].x+"\" , \"y\":\""+parcheggi[i].y+"\"}";  
+            contaaa++;      
         }
         data = data + "]";
         xhttp.open("POST", "./api/salvaparcheggi.php", true);	
@@ -38,8 +47,6 @@ function save()
                     window.location = "./percorso/index.html";
                 }
             };
-        sxhttp.send("entrate=" + entry);
-
-       
+        sxhttp.send("entrate=" + entry); 
     }
 }

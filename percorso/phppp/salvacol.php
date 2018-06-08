@@ -6,10 +6,13 @@ $p = json_decode($_POST['dati'] );
 
 foreach( $p as $collegamento )
 {
+    echo " CIAO ";
+    var_dump($collegamento);
     $distanza = $collegamento->distanza; 
-    $a = $parcheggio->Parcheggio_a;
-    $b = $parcheggio->Parcehggio_b;
-    $queryInserimento = "insert INTO collegamento (distanza,Parcheggio_a,Parcheggio_b) VALUES ('".$distanza."','".$a."','".$b."')";
+    $a = $collegamento->Parcheggio_a;
+    $b = $collegamento->Parcheggio_b;
+    $queryInserimento = "insert INTO collegamento (distanza,Parcheggio_a,Parcheggio_b) VALUES ('$distanza','$a','$b')";
+    
     $query = mysqli_query($connessione,$queryInserimento) or print mysqli_error($connessione);
 }
 ?>
