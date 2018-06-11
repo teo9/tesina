@@ -46,7 +46,7 @@ function save()
                 {
                     console.log(sxhttp.responseText);
                     if(sxhttp.responseText == "1")
-                        window.location = "./percorso/index.html";
+                        window.location = "../index.php";
                 }
             };
         sxhttp.send("entrate=" + entry); 
