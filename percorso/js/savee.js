@@ -16,7 +16,6 @@ function salva()
     {
         if(i!=0)
             data = data + ',';
-
             var distanzaaa = distanza(Collegamenti[i].da , Collegamenti[i].a);
             console.log(distanzaaa);    
             data += "{\"distanza\":\""+distanzaaa+"\" , \"Parcheggio_a\":\""+Collegamenti[i].da.nome +"\" , \"Parcheggio_b\":\""+Collegamenti[i].a.nome+"\"}";        
