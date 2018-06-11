@@ -12,7 +12,7 @@ foreach( $p as $collegamento )
     $a = $collegamento->Parcheggio_a;
     $b = $collegamento->Parcheggio_b;
     $queryInserimento = "insert INTO collegamento (distanza,Parcheggio_a,Parcheggio_b) VALUES ('$distanza','$a','$b')";
-    
+    $queryInserimento = "insert INTO collegamento (distanza,Parcheggio_a,Parcheggio_b) VALUES ('$distanza','$b','$a')";
     $query = mysqli_query($connessione,$queryInserimento) or print mysqli_error($connessione);
 }
 ?>

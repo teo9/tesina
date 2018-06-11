@@ -44,9 +44,10 @@
 
         public function Bellman($start)
         {
-            for($x=0;$x < count($this->Nodi);$i++)
+            $this->GetNodo($start)->SetPotencial(0);
+            for($x=0;$x < count($this->Nodi);$x++)
             {
-                $n = $this->Nodi[$i];
+                $n = $this->Nodi[$x];
                 if($n->getPotencial() != INF )
                 {
                     //cambio il valore a tutti i nodi collegati
@@ -63,8 +64,11 @@
                     }
                 }
             }
+
+            $this->Array_Remove($this->Nodi , $this->GetNodo($start) );
+
             usort( $this->Nodi , "ordina" );
-            return $this->Nodi[0];
+            return $this->Nodi;
         }
 
         public function dijkstra($da , $a)
@@ -135,6 +139,15 @@
             if($a->potencial < $b->potencial)
                 return -1;
             else return 1;
+        }
+
+        function ordinaA($a,$b)
+        {
+            if($a->potencial == $b->potencial)
+                return 0;
+            if($a->potencial < $b->potencial)
+                return 1;
+            else return -1;
         }
 
 ?>
