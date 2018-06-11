@@ -4,7 +4,6 @@
     if(isset($_GET['stato']) && $_GET['stato'] == "fine")
     {
         ?>
-
             <html>
                 <h1>
                     Parcheggio salvato
@@ -12,8 +11,7 @@
             </html>
         <?php 
     }
-
-    if(isset($_SESSION['log']))
+    else if(isset($_SESSION['log']))
     {
         header("location:nuovo.html");
     }
