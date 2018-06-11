@@ -44,7 +44,9 @@ function save()
             {
                 if(this.readyState == 4 && this.status == 200 )
                 {
-                    window.location = "./percorso/index.html";
+                    console.log(sxhttp.responseText);
+                    if(sxhttp.responseText == "1")
+                        window.location = "./percorso/index.html";
                 }
             };
         sxhttp.send("entrate=" + entry); 

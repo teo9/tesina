@@ -8,7 +8,7 @@ function drawEntrate(entrate)
         ctx.beginPath();
         ctx.fillStyle = "blue";
         ctx.strokeStyle = "red"
-        var x = entrate[i].x *25 + 150;
+        var x = entrate[i].x *25 + 160;
         var y = entrate[i].y *25 + 100;
         ctx.arc( x, y, 10 , 0, 2 * Math.PI );
         ctx.fill();

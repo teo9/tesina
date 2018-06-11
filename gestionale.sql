@@ -1,48 +1,55 @@
-create database if not exists gestionale;
+CREATE database gestionale;
 use gestionale;
 
+CREATE TABLE `collegamento` (
+  `distanza` varchar(10) NOT NULL,
+  `Parcheggio_a` varchar(50) NOT NULL,
+  `Parcheggio_b` varchar(50) NOT NULL
+) 
 
-CREATE TABLE if not exists entrata (
-  idEntrata int(10) NOT NULL auto_increment primary key,
-  x int(10) NOT NULL,
-  y int(10) NOT NULL
-);
 
-CREATE TABLE if not exists parcheggio (
-  nome varchar(50) NOT NULL primary key,
-  x int(11) DEFAULT NULL,
-  y int(11) DEFAULT NULL
-);
+CREATE TABLE `macchina` (
+  `targa` varchar(10) NOT NULL,
+  `Parcheggio_nome` varchar(50) NOT NULL
+) 
+CREATE TABLE `parcheggio` (
+  `nome` varchar(50) NOT NULL,
+  `x` int(11) DEFAULT NULL,
+  `y` int(11) DEFAULT NULL,
+  `entrata` int(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE if not exists macchina (
-  targa varchar(10) NOT NULL primary key,
-  Parcheggio_nome varchar(50) NOT NULL,
-  foreign key (Parcheggio_nome) references parcheggio(nome)
-                            on delete cascade
-                            on update cascade
-);
+ALTER TABLE `collegamento`
+  ADD PRIMARY KEY (`Parcheggio_a`,`Parcheggio_b`),
+  ADD KEY `Parcheggio_b` (`Parcheggio_b`);
 
-CREATE TABLE if not exists collegamento (
-  distanza varchar(10) NOT NULL,
-  Parcheggio_a varchar(50) NOT NULL,
-  Parcheggio_b varchar(50) NOT NULL,
-  primary key( Parcheggio_a , Parcheggio_b),
-  foreign key (Parcheggio_a) references parcheggio(nome)
-                            on delete cascade
-                            on update cascade,
-  foreign key (Parcheggio_b) references parcheggio(nome)
-                            on delete cascade
-                            on update cascade
-);
+--
+-- Indici per le tabelle `macchina`
+--
+ALTER TABLE `macchina`
+  ADD PRIMARY KEY (`targa`),
+  ADD KEY `Parcheggio_nome` (`Parcheggio_nome`);
 
-CREATE TABLE if not exists radice (
-  Parcheggio_nome varchar(50) NOT NULL,
-  Entrata_idEntrata int(10) NOT NULL,
-  primary key (Parcheggio_nome , Entrata_idEntrata),
-  foreign key (Parcheggio_nome) references parcheggio(nome)
-                            on delete cascade
-                            on update cascade,
-  foreign key (Entrata_idEntrata) references entrata(idEntrata)
-                            on delete cascade
-                            on update cascade
-) ;
+--
+-- Indici per le tabelle `parcheggio`
+--
+ALTER TABLE `parcheggio`
+  ADD PRIMARY KEY (`nome`);
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `collegamento`
+--
+ALTER TABLE `collegamento`
+  ADD CONSTRAINT `collegamento_ibfk_1` FOREIGN KEY (`Parcheggio_a`) REFERENCES `parcheggio` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `collegamento_ibfk_2` FOREIGN KEY (`Parcheggio_b`) REFERENCES `parcheggio` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `macchina`
+--
+ALTER TABLE `macchina`
+  ADD CONSTRAINT `macchina_ibfk_1` FOREIGN KEY (`Parcheggio_nome`) REFERENCES `parcheggio` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
