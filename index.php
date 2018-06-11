@@ -1,6 +1,18 @@
 <?php
     session_start();
 
+    if(isset($_GET['stato']) && $_GET['stato'] == "fine")
+    {
+        ?>
+
+            <html>
+                <h1>
+                    Parcheggio salvato
+                </h1>
+            </html>
+        <?php 
+    }
+
     if(isset($_SESSION['log']))
     {
         header("location:nuovo.html");

@@ -6,7 +6,7 @@ function salva()
     {
         if(this.readyState == 4 && this.status == 200 )
         {
-            window.location = "./percorso/index.html";
+            window.location = "../index.php?stato=fine";
         }
     };
 
