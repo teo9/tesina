@@ -5,19 +5,19 @@ CREATE TABLE `collegamento` (
   `distanza` varchar(10) NOT NULL,
   `Parcheggio_a` varchar(50) NOT NULL,
   `Parcheggio_b` varchar(50) NOT NULL
-) 
+) ;
 
 
 CREATE TABLE `macchina` (
   `targa` varchar(10) NOT NULL,
   `Parcheggio_nome` varchar(50) NOT NULL
-) 
+) ;
 CREATE TABLE `parcheggio` (
   `nome` varchar(50) NOT NULL,
   `x` int(11) DEFAULT NULL,
   `y` int(11) DEFAULT NULL,
   `entrata` int(2) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
 ALTER TABLE `collegamento`
   ADD PRIMARY KEY (`Parcheggio_a`,`Parcheggio_b`),
