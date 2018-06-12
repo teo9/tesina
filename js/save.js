@@ -32,7 +32,7 @@ function save()
             var y = Math.ceil((entrata[j].y-offset.y)/25);
             for(k=0;k<parcheggi.length;k++)
             {
-                if(x>=parcheggi[k].x && x<=parcheggi[k].x+1)
+                if((x>=parcheggi[k].x && x<=parcheggi[k].x+1 && y==parcheggi[k].y)|| (y>=parcheggi[k].y && y<=parcheggi[k].y+1 && x==parcheggi[k].x))
                 {
                     faicosa=false;
                 }

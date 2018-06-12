@@ -36,6 +36,7 @@ function linea(posi, punti) {
                                 ctx.lineWidth = "1";
                                 ctx.moveTo(tieni.x,tieni.y);
                                 ctx.lineTo(punti[i].x,punti[i].y);
+                                ctx.strokeStyle = "orange";
                                 ctx.fill();
                                 ctx.stroke();
                                 punto=false;
@@ -79,6 +80,7 @@ function linea(posi, punti) {
                                 ctx.moveTo(tieni.x,tieni.y);
                                 ctx.lineTo(punti[i].x,punti[i].y);
                                 ctx.fill();
+                                ctx.strokeStyle = "orange";
                                 ctx.stroke();
                                 punto=false;
 
